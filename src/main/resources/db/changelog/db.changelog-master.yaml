@@ -1,0 +1,26 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 1
+      author: app
+      changes:
+        - createTable:
+            tableName: links
+            columns:
+              - column:
+                  name: id
+                  type: integer
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: links_pk
+                    nullable: false
+              - column:
+                  name: url
+                  type: varchar(1024)
+                  constraints:
+                    nullable: false
+        - createSequence:
+            - sequenceName: links_seq
+            - startValue: 1
+            - incrementBy: 1
+            - cacheSize: 0
