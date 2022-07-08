@@ -10,4 +10,6 @@ public class LnkshrtnrApplication {
 		SpringApplication.run(LnkshrtnrApplication.class, args);
 	}
 
+
+
 }

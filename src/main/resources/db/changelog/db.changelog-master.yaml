@@ -24,3 +24,36 @@ databaseChangeLog:
             - startValue: 1
             - incrementBy: 1
             - cacheSize: 0
+
+
+  - changeSet:
+      id: 2
+      author: app
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: id
+                  valueSequenceNext: links_seq
+              - column:
+                  name: url
+                  value: 'https://yandex.ru'
+            tableName: links
+        - insert:
+            columns:
+              - column:
+                  name: id
+                  valueSequenceNext: links_seq
+              - column:
+                  name: url
+                  value: 'https://google.com'
+            tableName: links
+        - insert:
+            columns:
+              - column:
+                  name: id
+                  valueSequenceNext: links_seq
+              - column:
+                  name: url
+                  value: 'https://ya.ru'
+            tableName: links
