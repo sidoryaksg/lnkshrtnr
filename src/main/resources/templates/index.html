@@ -9,17 +9,21 @@
             display: inline-block;
             padding: 25px;
             border: 1px solid gray;
-            margin-top: 10px;
+            margin-top: 20px;
             margin-bottom: 10px
         }
     </style>
 </head>
 <body>
-<div th:if="${shortUrlCode}" class="short-url-block">
-    <span id="shortUrlSpan" th:text="${shortUrlCode}"></span>
+    <div th:if="${shortUrlCode}" class="short-url-block">
+        <div>
+            <span id="shortUrlSpan" th:text="${shortUrlCode}"></span>
+        </div>
+        <div style="margin-top: 10px">
+            <button type="button" onclick="copyToClipboard()">Copy to clipboard</button>
+        </div>
+    </div>
 
-
-</div>
 
     <form method="post" th:action="@{/}">
         <div>
@@ -39,6 +43,27 @@
             + document.getElementById('shortUrlSpan').innerText;
 
         document.getElementById('shortUrlSpan').innerText = shortUrl;
+
+        function copyToClipboard() {
+            const shortUrlSpan = document.getElementById('shortUrlSpan');
+
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = shortUrlSpan.textContent;
+
+            document.body.appendChild(tempTextArea);
+
+            tempTextArea.select();
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(tempTextArea.value);
+            } else {
+                document.execCommand('copy');
+            }
+
+            tempTextArea.remove();
+        }
+
+
     </script>
 
 
