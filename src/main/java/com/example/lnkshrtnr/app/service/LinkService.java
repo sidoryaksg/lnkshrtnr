@@ -18,4 +18,8 @@ public class LinkService {
 
         return repository.save(link).getId();
     }
+
+    public Link getById(int linkId) {
+        return repository.getById(linkId);
+    }
 }
