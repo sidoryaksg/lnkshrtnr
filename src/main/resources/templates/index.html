@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Lnkshrtnr</title>
+
+    <style type="text/css">
+        .short-url-block {
+            display: inline-block;
+            padding: 25px;
+            border: 1px solid gray;
+            margin-top: 10px;
+            margin-bottom: 10px
+        }
+    </style>
+</head>
+<body>
+<div th:if="${shortUrlCode}" class="short-url-block">
+    <span id="shortUrlSpan" th:text="${shortUrlCode}"></span>
+
+
+</div>
+
+    <form method="post" th:action="@{/}">
+        <div>
+            <label>Enter long url</label>
+        </div>
+        <div>
+                <textarea name="linkUrl" rows="10" cols="50" placeholder="Long url">
+
+                </textarea>
+        </div>
+        <div>
+            <button type="submit">Create short URL</button>
+        </div>
+    </form>
+
+    <script type="text/javascript">
+        const shortUrl = document.location.href
+            + (document.location.href.endsWith('/') ? '' : '/')
+            + document.getElementById('shortUrlSpan').innerText;
+
+        document.getElementById('shortUrlSpan').innerText = shortUrl;
+    </script>
+
+
+</body>
+</html>
